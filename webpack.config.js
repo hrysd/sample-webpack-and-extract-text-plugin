@@ -11,10 +11,17 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  resolve: { extensions: ['.js']
+  resolve: { extensions: ['.js', '.vue']
   },
   module: {
     rules: [
+      {
+        test: /.vue$/,
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        }
+      },
       {
         test: /.scss$/,
         use: ExtractTextPlugin.extract({
